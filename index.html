@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Hooman - Creative UI Designer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <h3>balle.up</h3>
+      </div>
+        <nav class="navbar">
+            <a class="active" href="#home" style="--i:1;">Home</a>
+            <a href="#about" style="--i:2;">About me</a>
+            <a href="#works" style="--i:3;">Works</a>
+            <a href="#contact" style="--i:4;">Contact</a>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1 class="hero-title">
+                <span class="title-white">CREATIVE UI</span>
+                <span class="title-teal">DESIGNER</span>
+            </h1>
+            <p class="hero-description">Transforming ideas into beautiful, functional digital experiences. Specializing in user interface design that combines aesthetics with usability.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Hire me</a>
+                <a href="#" class="btn btn-secondary" download>Download CV</a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-box">
+                    <i class='bx bx-down-arrow-alt'></i>
+                </div>
+            </div>
+        </div>
+        <div class="home-img">
+            <div class="illustration-wrapper">
+                <div class="teal-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+                <!-- 3D Model Container -->
+                <div id="hero-3d-container" class="model-3d-container"></div>
+                <img src="ok img.png" alt="Creative Designer Illustration" class="hero-illustration">
+            </div>
+            <!-- Particle Background -->
+            <canvas id="particles-canvas" class="particles-canvas"></canvas>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">
+                        <span class="title-white">About</span>
+                        <span class="title-teal">me</span>
+                    </h2>
+                    <p class="about-description">
+                        I'm a passionate Creative UI Designer with expertise in crafting intuitive and visually stunning user interfaces. With years of experience in the industry, I specialize in creating designs that not only look beautiful but also provide exceptional user experiences. My approach combines creativity with strategic thinking to deliver solutions that exceed client expectations.
+                    </p>
+                    <p class="about-description">
+                        I work with modern design tools and stay updated with the latest trends in UI/UX design. My goal is to create digital experiences that are both functional and delightful, ensuring users enjoy every interaction with the products I design.
+                    </p>
+                    <a href="#works" class="read-more-link">Read More</a>
+                </div>
+                <div class="about-img">
+                    <div class="illustration-wrapper">
+                        <div class="teal-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                        </div>
+                        <!-- 3D Model Container for About -->
+                        <div id="about-3d-container" class="model-3d-container"></div>
+                        <img src="about-me.png" alt="About Me Illustration" class="about-illustration">
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">
+                        <span class="num" data-target="120">0</span>
+            <span class="plus">+</span>
+        </div>
+                    <div class="stat-label">Completed Projects</div>
+    </div>
+                <div class="stat-card">
+                    <div class="stat-number">
+                        <span class="num" data-target="95">0</span>
+            <span class="plus">%</span>
+        </div>
+                    <div class="stat-label">Client Satisfaction</div>
+    </div>
+                <div class="stat-card">
+                    <div class="stat-number">
+                        <span class="num" data-target="15">0</span>
+            <span class="plus">+</span>
+        </div>
+                    <div class="stat-label">Years Of Experience</div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- Skills Bar Section -->
+    <section class="skills-bar-section">
+        <div class="container-bar">
+            <div class="bar">
+                <span>React • Spline • JavaScript • Tailwind CSS • Duda • Wix • GSAP • WordPress • Figma • Adobe XD • Sketch • InVision • Framer • Webflow •</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Recent Works Section -->
+    <section id="works" class="works-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-white">My recent</span>
+                <span class="title-teal">works</span>
+            </h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ui">UI</button>
+                <button class="filter-btn" data-filter="ux">UX</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+            </div>
+            <div class="works-grid">
+                <div class="work-item" data-category="ui web">
+                    <div class="work-image">
+                        <div class="work-3d-container" id="work-3d-1"></div>
+                        <div class="work-placeholder work-purple">
+                            <div class="gradient-overlay"></div>
+                            <div class="placeholder-content">
+                                <div class="placeholder-element"></div>
+                                <div class="placeholder-element"></div>
+                                <div class="placeholder-element"></div>
+                            </div>
+                        </div>
+                        <div class="work-badge">UI Design</div>
+                    </div>
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>E-Commerce Dashboard</h3>
+                            <p>Modern Interface Design with Advanced Analytics</p>
+                            <div class="work-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">React</span>
+                                <span class="tag">UI/UX</span>
+                            </div>
+                            <a href="#" class="work-link">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="ux web">
+                    <div class="work-image">
+                        <div class="work-3d-container" id="work-3d-2"></div>
+                        <div class="work-placeholder work-laptop">
+                            <div class="gradient-overlay"></div>
+                            <div class="laptop-screen">
+                                <div class="screen-content">
+                                    <div class="screen-element"></div>
+                                    <div class="screen-element"></div>
+                                </div>
+                            </div>
+                            <div class="floating-cards">
+                                <div class="card card-1"></div>
+                                <div class="card card-2"></div>
+                                <div class="card card-3"></div>
+                            </div>
+                        </div>
+                        <div class="work-badge">UX Design</div>
+                    </div>
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>FinTech Mobile App</h3>
+                            <p>User Experience Design for Banking Platform</p>
+                            <div class="work-tags">
+                                <span class="tag">Adobe XD</span>
+                                <span class="tag">Prototyping</span>
+                                <span class="tag">Research</span>
+                            </div>
+                            <a href="#" class="work-link">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="ui">
+                    <div class="work-image">
+                        <div class="work-3d-container" id="work-3d-3"></div>
+                        <div class="work-placeholder work-mobile">
+                            <div class="gradient-overlay"></div>
+                            <div class="phone phone-1">
+                                <div class="phone-screen">
+                                    <div class="mobile-element"></div>
+                                </div>
+                            </div>
+                            <div class="phone phone-2">
+                                <div class="phone-screen">
+                                    <div class="mobile-element"></div>
+                                </div>
+                            </div>
+                            <div class="phone phone-3">
+                                <div class="phone-screen">
+                                    <div class="mobile-element"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-badge">Mobile UI</div>
+                    </div>
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Fitness Tracker App</h3>
+                            <p>iOS & Android UI Design</p>
+                            <div class="work-tags">
+                                <span class="tag">Sketch</span>
+                                <span class="tag">Swift</span>
+                                <span class="tag">Material</span>
+                            </div>
+                            <a href="#" class="work-link">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="web ui">
+                    <div class="work-image">
+                        <div class="work-3d-container" id="work-3d-4"></div>
+                        <div class="work-placeholder work-web">
+                            <div class="gradient-overlay"></div>
+                            <div class="web-preview">
+                                <div class="browser-bar">
+                                    <div class="browser-dots">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                                <div class="web-content">
+                                    <div class="web-element"></div>
+                                    <div class="web-element"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-badge">Web Design</div>
+                    </div>
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Portfolio Website</h3>
+                            <p>Creative Portfolio with 3D Elements</p>
+                            <div class="work-tags">
+                                <span class="tag">Three.js</span>
+                                <span class="tag">GSAP</span>
+                                <span class="tag">CSS3</span>
+                            </div>
+                            <a href="#" class="work-link">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="ux ui">
+                    <div class="work-image">
+                        <div class="work-3d-container" id="work-3d-5"></div>
+                        <div class="work-placeholder work-dashboard">
+                            <div class="gradient-overlay"></div>
+                            <div class="dashboard-grid">
+                                <div class="dashboard-card"></div>
+                                <div class="dashboard-card"></div>
+                                <div class="dashboard-card"></div>
+                                <div class="dashboard-card"></div>
+                            </div>
+                        </div>
+                        <div class="work-badge">Dashboard</div>
+                    </div>
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Analytics Dashboard</h3>
+                            <p>Data Visualization & UI Design</p>
+                            <div class="work-tags">
+                                <span class="tag">D3.js</span>
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">Charts</span>
+                            </div>
+                            <a href="#" class="work-link">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="web">
+                    <div class="work-image">
+                        <div class="work-3d-container" id="work-3d-6"></div>
+                        <div class="work-placeholder work-landing">
+                            <div class="gradient-overlay"></div>
+                            <div class="landing-preview">
+                                <div class="landing-header"></div>
+                                <div class="landing-content">
+                                    <div class="landing-element"></div>
+                                    <div class="landing-element"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-badge">Landing Page</div>
+                    </div>
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Product Landing Page</h3>
+                            <p>High-Converting Landing Page Design</p>
+                            <div class="work-tags">
+                                <span class="tag">Webflow</span>
+                                <span class="tag">A/B Testing</span>
+                                <span class="tag">SEO</span>
+                            </div>
+                            <a href="#" class="work-link">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-white">Our</span>
+                <span class="title-teal">Services</span>
+            </h2>
+            <div class="services-grid">
+                <div class="service-card">
+            <i class="fa-solid fa-code"></i>
+            <h3>Web Development</h3>
+                    <p>Creating responsive and modern websites using the latest technologies and best practices in web development.</p>
+                    <button class="service-btn">Read More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-palette"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Designing intuitive user interfaces and experiences that engage users and drive conversions.</p>
+                    <button class="service-btn">Read More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-mobile-alt"></i>
+                    <h3>Mobile Design</h3>
+                    <p>Creating beautiful and functional mobile app designs for iOS and Android platforms.</p>
+                    <button class="service-btn">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-illustration">
+                    <div class="illustration-wrapper">
+                        <div class="teal-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                        </div>
+                        <div class="contact-graphic">
+                            <div class="graphic-person"></div>
+                            <div class="graphic-steps">
+                                <div class="step step-1"></div>
+                                <div class="step step-2"></div>
+                                <div class="step step-3"></div>
+                            </div>
+                            <div class="graphic-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h2 class="section-title">
+                        <span class="title-white">Got a project in</span>
+                        <span class="title-teal">mind?</span>
+                    </h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <input type="text" name="name" id="contactName" placeholder="Your name" required>
+                            <input type="email" name="email" id="contactEmail" placeholder="Your email" required>
+                        </div>
+                        <input type="text" name="subject" id="contactSubject" placeholder="Your subject" required>
+                        <textarea name="message" id="contactMessage" rows="5" placeholder="Your message" required></textarea>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loader" style="display: none;">
+                                <i class='bx bx-loader-alt bx-spin'></i> Sending...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+        </div> 
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About me</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="social-media">
+                <a href="#" aria-label="Facebook"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>Terms of Service - Privacy Policy</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Loading Overlay (optional) -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="three-models.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

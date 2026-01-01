@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: 'popping',sans-serif;
+
+}
+
+
+body{
+  background-color: #1f242d 
+}
+.header{
+  left: 0%;
+top: 0%;
+   position: fixed;
+   width: 100%;
+   padding: 20px 10%;
+   background: transparent;
+   justify-content: space-between;
+ align-items: center;
+   display: flex;
+   z-index: 100;
+   padding-left: 10px;
+  font-size: 20px;
+
+}
+.logo{font-size: 25px;
+color: #fff;
+text-decoration: none;
+font-weight: 600;
+cursor: default;
+padding: 1px;
+margin-left: 100px;
+font-size: 50px;
+}
+.navbar a{
+  color: #fff;
+  text-decoration: none;
+   justify-content:space-between ;
+   padding-left: 10px;
+   margin-left: 10px;
+   margin-top: 10px;
+
+ }
+.navbar a:hover,
+.navbar a.active{
+  color: aqua;
+
+}
+
+.abc{
+  margin-left:10px ;
+  padding: 80px;
+}
+.image{
+  width: 500px;
+  height: 300px;
+  padding: 300px;
+  margin: 210px;
+  border-radius: 25%;
+  display: flex;
+  border-radius: 25%;
+  margin-bottom: 100px;
+  padding-top: 40px;
+  margin-right: 100px;
+
+}
