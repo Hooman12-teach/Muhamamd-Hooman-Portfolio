@@ -88,38 +88,209 @@ document.querySelectorAll('.stat-card').forEach(card => {
     statsObserver.observe(card);
 });
 
+// Dynamic Project Rendering
+function renderProjects() {
+    const projects = window.projectManager ? window.projectManager.getAllProjects() : [];
+    const worksGrid = document.getElementById('worksGrid');
+    
+    if (!worksGrid) return;
+
+    if (projects.length === 0) {
+        // Keep default projects if no custom ones
+        return;
+    }
+
+    const imageTypeMap = {
+        'purple': 'work-purple',
+        'laptop': 'work-laptop',
+        'mobile': 'work-mobile',
+        'web': 'work-web',
+        'dashboard': 'work-dashboard',
+        'landing': 'work-landing'
+    };
+
+    const badgeMap = {
+        'purple': 'UI Design',
+        'laptop': 'UX Design',
+        'mobile': 'Mobile UI',
+        'web': 'Web Design',
+        'dashboard': 'Dashboard',
+        'landing': 'Landing Page'
+    };
+
+    worksGrid.innerHTML = projects.map((project, index) => {
+        const imageClass = imageTypeMap[project.imageType] || 'work-purple';
+        const badgeText = badgeMap[project.imageType] || 'Project';
+        const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+        return `
+            <div class="work-item" data-category="${project.category}" data-id="${project.id}">
+                <div class="work-image">
+                    <div class="work-3d-container" id="work-3d-${project.id}"></div>
+                    ${project.imageData ? `
+                        <div class="work-placeholder work-custom">
+                            <img src="${project.imageData}" alt="${project.title}" class="work-custom-image">
+                        </div>
+                        <div class="work-badge">Custom Image</div>
+                    ` : `
+                        <div class="work-placeholder ${imageClass}">
+                            <div class="gradient-overlay"></div>
+                            ${getImageContent(project.imageType)}
+                        </div>
+                        <div class="work-badge">${badgeText}</div>
+                    `}
+                </div>
+                <div class="work-overlay">
+                    <div class="work-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="work-tags">${tagsHTML}</div>
+                        <a href="${project.link}" class="work-link" target="_blank">View Project <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // Re-initialize 3D models for new projects
+    if (typeof initWork3D === 'function') {
+        projects.forEach((project, index) => {
+            const category = project.category.includes('ui') ? 'ui' : 
+                           project.category.includes('ux') ? 'ux' : 'web';
+            setTimeout(() => {
+                initWork3D(`work-3d-${project.id}`, category);
+            }, index * 100);
+        });
+    }
+
+    // Re-attach filter functionality (disabled — filters removed)
+    // setupWorkFilter();
+}
+
+function getImageContent(imageType) {
+    const contents = {
+        'purple': `
+            <div class="placeholder-content">
+                <div class="placeholder-element"></div>
+                <div class="placeholder-element"></div>
+                <div class="placeholder-element"></div>
+            </div>
+        `,
+        'laptop': `
+            <div class="laptop-screen">
+                <div class="screen-content">
+                    <div class="screen-element"></div>
+                    <div class="screen-element"></div>
+                </div>
+            </div>
+            <div class="floating-cards">
+                <div class="card card-1"></div>
+                <div class="card card-2"></div>
+                <div class="card card-3"></div>
+            </div>
+        `,
+        'mobile': `
+            <div class="phone phone-1">
+                <div class="phone-screen">
+                    <div class="mobile-element"></div>
+                </div>
+            </div>
+            <div class="phone phone-2">
+                <div class="phone-screen">
+                    <div class="mobile-element"></div>
+                </div>
+            </div>
+            <div class="phone phone-3">
+                <div class="phone-screen">
+                    <div class="mobile-element"></div>
+                </div>
+            </div>
+        `,
+        'web': `
+            <div class="web-preview">
+                <div class="browser-bar">
+                    <div class="browser-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="web-content">
+                    <div class="web-element"></div>
+                    <div class="web-element"></div>
+                </div>
+            </div>
+        `,
+        'dashboard': `
+            <div class="dashboard-grid">
+                <div class="dashboard-card"></div>
+                <div class="dashboard-card"></div>
+                <div class="dashboard-card"></div>
+                <div class="dashboard-card"></div>
+            </div>
+        `,
+        'landing': `
+            <div class="landing-preview">
+                <div class="landing-header"></div>
+                <div class="landing-content">
+                    <div class="landing-element"></div>
+                    <div class="landing-element"></div>
+                </div>
+            </div>
+        `
+    };
+    return contents[imageType] || contents['purple'];
+}
+
 // Work Filter Functionality
-const filterButtons = document.querySelectorAll('.filter-btn');
-const workItems = document.querySelectorAll('.work-item');
+function setupWorkFilter() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const workItems = document.querySelectorAll('.work-item');
 
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
+    filterButtons.forEach(button => {
+        // Remove old listeners
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        newButton.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            newButton.classList.add('active');
 
-        const filterValue = button.getAttribute('data-filter');
+            const filterValue = newButton.getAttribute('data-filter');
 
-        workItems.forEach((item, index) => {
-            const categories = item.getAttribute('data-category').split(' ');
-            
-            if (filterValue === 'all' || categories.includes(filterValue)) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                }, index * 50);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 300);
-            }
+            workItems.forEach((item, index) => {
+                const categories = item.getAttribute('data-category').split(' ');
+                
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, index * 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
         });
     });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait for projectManager to be ready
+    setTimeout(() => {
+        if (window.projectManager) {
+            renderProjects();
+        }
+    }, 500);
 });
+
+// Make renderProjects globally available
+window.renderProjects = renderProjects;
 
 // Scroll Reveal Animation
 const revealElements = document.querySelectorAll('.reveal, .service-card, .work-item, .stat-card');
